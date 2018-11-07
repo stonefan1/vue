@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>前端页面模板</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <section>
+        <input type="text" v-model = "name">
+        <input type="text" v-model = "address">
+        <button
+            @click ="btn"
+        >
+        确定
+        </button>
+    </section>
+    <section>
+        <p
+            v-for = "item in sore"
+            :key = "item.id"
+        >
+            <a href="#"> {{item.name}}</a>
+            <a href="#"> {{item.adress}}</a>
+        </p>
+
+    </section>
+</div>
+
+<script>
+    var app = new Vue({
+        el:'#app',
+        data : {
+           name :'',
+           address :'',
+           sore : [
+               {
+                   name:'1',
+                   adress:'南京'
+               },
+               {
+                   name:'2',
+                   adress:'上海'
+               },
+               {
+                   name:'3',
+                   adress:'北京'
+               },
+           ]
+        },
+        methods:{
+            btn(){
+                this.sore.push({name:this.name,adress:this.address})
+            }
+        }
+    })
+</script>
+<style type="text/css">
+    .a{
+        color: #f80;
+    }
+    .active{
+        background: #000;
+        display: block;
+        padding: 10px;
+    }
+</style>
+</body>
+</html>
